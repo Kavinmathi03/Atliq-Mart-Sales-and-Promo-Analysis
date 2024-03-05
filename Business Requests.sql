@@ -68,8 +68,8 @@ on f.event_id=x.event_id
 
 select 
      c.campaign_name,
-     sum(y.total_revenue_before_promo) as total_revenue_before_promo,
-     sum(y.total_revenue_after_promo) as total_revenue_after_promo
+     concat(format(sum(y.total_revenue_before_promo)/1000000,2),'M') as total_revenue_before_promo,
+     concat(format(sum(y.total_revenue_after_promo)/1000000,2),'M') as total_revenue_after_promo
 from y
 left join dim_campaigns c
 on y.campaign_id=c.campaign_id
